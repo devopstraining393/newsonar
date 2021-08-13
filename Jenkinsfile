@@ -20,7 +20,7 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv('SONAR_GCP') {
-                    sh "${scannerHome}/bin/sonar-scanner -e -Dsonar.projectKey=spring-boot-base -Dsonar.host.url=http://10.16.8.88:9000 -Dsonar.login=5f00f799dfc75cd693ee109089f73eb9a0878265 -Dsonar.java.binaries=target -Dsonar.coverage.exclusions=**/.mvn/**,**/src/test/**,**/domain/**,**SpringBootApplication.java"
+                    sh "${scannerHome}/bin/sonar-scanner -e -Dsonar.projectKey=spring-boot-base -Dsonar.host.url=http://10.16.8.88:9000 -Dsonar.login=4dbbcecf3137d6a8b037daaf1f21414f510d2614 -Dsonar.java.binaries=target -Dsonar.coverage.exclusions=**/.mvn/**,**/src/test/**,**/domain/**,**SpringBootApplication.java"
                 }
             }
         }
