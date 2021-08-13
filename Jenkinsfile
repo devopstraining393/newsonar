@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Quality Gate') {
             steps {
-              sh 'sleep 300'
+              sh 'sleep 5'
               timeout(time: 1, unit: 'MINUTES') {
                 waitForQualityGate abortPipeline: true
               }
