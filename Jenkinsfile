@@ -21,7 +21,7 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'sonar_token', variable: 'sonar_token')]) {
                     withSonarQubeEnv('SONAR_GCP') {
-                        sh "${scannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://10.16.2.120:9000 -Dsonar.login=${sonar_token}"
+                        sh "${scannerHome}/bin/sonar-scanner -e -Dsonar.login=${sonar_token}"
                     }
                 }
             }
