@@ -79,7 +79,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void editShould_ReturnBadRequest() throws Exception {
+    public void editShouldReturnBadRequest() throws Exception {
         this.mvc.perform(put("/products/1"))
                 .andExpect(status().isBadRequest());
     }
