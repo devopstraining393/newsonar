@@ -44,10 +44,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void editProduct(ProductDTO productDTO) {
+    public ProductDTO editProduct(ProductDTO productDTO) {
         this.getProductById(productDTO.getId());
         Product product = this.mapper.toEntity(productDTO);
-        this.productRepository.save(product);
+        product = this.productRepository.save(product);
+        return this.mapper.toDTO(product);
     }
 
     @Override

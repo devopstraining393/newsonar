@@ -47,13 +47,13 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void list_should_return_no_content() throws Exception {
+    public void listShouldReturnNoContent() throws Exception {
         this.mvc.perform(get("/products"))
                 .andExpect(status().isNoContent());
     }
 
     @Test
-    public void list_should_return_ok() throws Exception {
+    public void listShouldReturnOk() throws Exception {
         postProduct();
         this.mvc.perform(get("/products"))
                 .andExpect(status().isOk())
@@ -63,13 +63,13 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void showProduct_should_return_not_found() throws Exception {
+    public void showProductShouldReturnNotFound() throws Exception {
         this.mvc.perform(get("/products/1"))
                 .andExpect(status().isNotFound());
     }
 
     @Test
-    public void showProduct_should_return_ok() throws Exception {
+    public void showProductShouldReturnOk() throws Exception {
         postProduct();
         this.mvc.perform(get("/products/1"))
                 .andExpect(status().isOk())
@@ -79,13 +79,13 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void edit_should_return_bad_request() throws Exception {
+    public void editShould_ReturnBadRequest() throws Exception {
         this.mvc.perform(put("/products/1"))
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void edit_should_return_not_found() throws Exception {
+    public void editShouldReturnNotFound() throws Exception {
         ProductDTO productDTO = new ProductDTO();
         productDTO.setId(1);
         productDTO.setName("Product 01");
@@ -99,7 +99,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void edit_should_return_no_content() throws Exception {
+    public void editShouldReturnNoContent() throws Exception {
         postProduct();
 
         ProductDTO productDTO = new ProductDTO();
@@ -115,7 +115,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void newProduct_should_return_badRequest() throws Exception {
+    public void newProductShouldReturnBadRequest() throws Exception {
         ProductDTO productDTO = new ProductDTO();
         productDTO.setName("");
         productDTO.setPrice(null);
@@ -128,7 +128,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void newProduct_should_return_created() throws Exception {
+    public void newProductShouldReturnCreated() throws Exception {
         ProductDTO productDTO = new ProductDTO();
         productDTO.setName("Product 01");
         productDTO.setPrice(BigDecimal.valueOf(1));
@@ -140,13 +140,13 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void delete_should_return_not_found() throws Exception {
+    public void deleteShouldReturnNotFound() throws Exception {
         this.mvc.perform(delete("/products/1"))
                 .andExpect(status().isNotFound());
     }
 
     @Test
-    public void delete_should_return_no_content() throws Exception {
+    public void deleteShouldReturnNoContent() throws Exception {
         postProduct();
         this.mvc.perform(delete("/products/1"))
                 .andExpect(status().isNoContent());

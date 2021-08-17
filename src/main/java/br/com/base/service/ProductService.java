@@ -12,7 +12,7 @@ public interface ProductService {
 
     ProductDTO saveProduct(ProductDTO productDTO);
 
-    void editProduct(ProductDTO productDTO);
+    ProductDTO editProduct(ProductDTO productDTO);
 
     void deleteProduct(Integer id);
 

@@ -16,20 +16,20 @@ import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 )
 public class NamingConventionTest {
     @ArchTest
-    static final ArchRule controllers_should_be_suffixed =
+    static final ArchRule controllersShouldBeSuffixed =
             classes()
                     .that().resideInAPackage("..controller..")
                     .or().areAnnotatedWith(RestController.class)
                     .should().haveSimpleNameEndingWith("Controller");
 
     @ArchTest
-    static final ArchRule classes_named_controller_should_be_in_a_controller_package =
+    static final ArchRule classesNamedControllerShouldBeInAControllerPackage =
             classes()
                     .that().haveSimpleNameContaining("Controller")
                     .should().resideInAPackage("..controller..");
 
     @ArchTest
-    static final ArchRule services_should_be_suffixed =
+    static final ArchRule servicesShouldBeSuffixed =
             classes()
                     .that().resideInAPackage("..service..")
                     .or().areAnnotatedWith(Service.class)
@@ -37,21 +37,21 @@ public class NamingConventionTest {
                     .orShould().haveSimpleNameEndingWith("ServiceImpl");
 
     @ArchTest
-    static final ArchRule services_named_controller_should_be_in_a_controller_package =
+    static final ArchRule servicesNamedControllerShouldBeInAControllerPackage =
             classes()
                     .that().haveSimpleNameContaining("Service")
                     .or().haveSimpleNameContaining("ServiceImpl")
                     .should().resideInAPackage("..service..");
 
     @ArchTest
-    static final ArchRule repositories_should_be_suffixed =
+    static final ArchRule repositoriesShouldBeSuffixed =
             classes()
                     .that().resideInAPackage("..repository..")
                     .or().areAnnotatedWith(Repository.class)
                     .should().haveSimpleNameEndingWith("Repository");
 
     @ArchTest
-    static final ArchRule repositories_named_controller_should_be_in_a_controller_package =
+    static final ArchRule repositoriesNamedControllerShouldBeInAControllerPackage =
             classes()
                     .that().haveSimpleNameContaining("Repository")
                     .should().resideInAPackage("..repository..");
