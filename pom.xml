@@ -16,6 +16,8 @@
     <description>Projeto base Spring Boot</description>
     <properties>
         <java.version>11</java.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.release>11</maven.compiler.release>
         <jacoco.version>0.8.6</jacoco.version>
     </properties>
     <pluginRepositories>
