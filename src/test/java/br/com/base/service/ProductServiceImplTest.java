@@ -49,7 +49,7 @@ public class ProductServiceImplTest {
 
         when(this.productRepository.findAll()).thenReturn(products);
 
-        var result = this.productService.listAllProducts();
+        List<ProductDTO> result = this.productService.listAllProducts();
         Assert.assertEquals(this.mapper.toDTO(products).size(), result.size());
 
         expectedList.forEach(expected ->{
@@ -69,7 +69,7 @@ public class ProductServiceImplTest {
         product.setPrice(BigDecimal.valueOf(10));
         when(this.productRepository.findById(anyInt())).thenReturn(Optional.of(product));
 
-        var result = this.productService.getProductById(1);
+        ProductDTO result = this.productService.getProductById(1);
         Assert.assertEquals(product.getId(), result.getId());
         Assert.assertEquals(product.getName(), result.getName());
         Assert.assertEquals(product.getPrice(), result.getPrice());
@@ -77,29 +77,29 @@ public class ProductServiceImplTest {
 
     @Test
     public void saveProduct() {
-        var product = new Product();
+        Product product = new Product();
         product.setName("Product 02");
         product.setPrice(BigDecimal.valueOf(50));
 
-        var result = this.productService.saveProduct(this.mapper.toDTO(product));
+        ProductDTO result = this.productService.saveProduct(this.mapper.toDTO(product));
         Assert.assertEquals(product.getName(), result.getName());
         Assert.assertEquals(product.getPrice(), result.getPrice());
     }
 
     @Test(expected = NotFoundException.class)
     public void editProductShouldThrowNotFoundException() {
-        var productDTO = new ProductDTO();
+        ProductDTO productDTO = new ProductDTO();
         this.productService.editProduct(productDTO);
     }
 
     @Test
     public void editProduct() {
-        var product = new Product();
+        Product product = new Product();
         product.setId(1);
         product.setName("Product Example");
         product.setPrice(BigDecimal.valueOf(100));
 
-        var productEdited = new Product();
+        Product productEdited = new Product();
         productEdited.setId(1);
         productEdited.setName("Product Example");
         productEdited.setPrice(BigDecimal.valueOf(50));
@@ -107,10 +107,10 @@ public class ProductServiceImplTest {
         when(this.productRepository.findById(anyInt())).thenReturn(Optional.of(product));
         when(this.productRepository.save(any(Product.class))).thenReturn(productEdited);
 
-        var productDTO = this.mapper.toDTO(product);
+        ProductDTO productDTO = this.mapper.toDTO(product);
         productDTO.setName("Product Example");
         productDTO.setPrice(BigDecimal.valueOf(50));
-        var result = this.productService.editProduct(productDTO);
+        ProductDTO result = this.productService.editProduct(productDTO);
 
         Assert.assertEquals(productEdited.getId(), result.getId());
         Assert.assertEquals(productEdited.getName(), result.getName());
@@ -125,7 +125,7 @@ public class ProductServiceImplTest {
 
     @Test
     public void deleteProduct() {
-        var product = new Product();
+        Product product = new Product();
         product.setId(1);
         ArgumentCaptor<Integer> captor = ArgumentCaptor.forClass(Integer.class);
         when(this.productRepository.findById(anyInt())).thenReturn(Optional.of(product));

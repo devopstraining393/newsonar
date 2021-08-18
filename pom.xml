@@ -15,7 +15,7 @@
     <name>spring-boot-base</name>
     <description>Projeto base Spring Boot</description>
     <properties>
-        <java.version>11</java.version>
+        <java.version>1.8</java.version>
         <jacoco.version>0.8.6</jacoco.version>
     </properties>
     <pluginRepositories>
