@@ -116,7 +116,62 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>fabric8-maven-plugin</artifactId>
+                <version>4.2.0</version>
+            </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>gcr</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <property>
+                    <name>registry</name>
+                    <value>gcr</value>
+                </property>
+                <file>
+                    <exists>deploy</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.fabric8</groupId>
+                        <artifactId>fabric8-maven-plugin</artifactId>
+                        <configuration>
+                            <mode>kubernetes</mode>
+                            <forcePull>true</forcePull>
+                            <images>
+                                <image>
+                                    <name>gcr.io/spring-boot-base/${project.artifactId}</name>
+                                    <build>
+                                        <tags>
+                                            <tag>v2</tag>
+                                        </tags>
+                                        <dockerFile>${project.basedir}/deploy/Dockerfile</dockerFile>
+                                        <contextDir>${project.basedir}</contextDir>
+                                    </build>
+                                </image>
+                            </images>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>resource</goal>
+                                    <goal>build</goal>
+                                    <goal>push</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>
