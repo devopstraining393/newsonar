@@ -147,7 +147,7 @@
                             <forcePull>true</forcePull>
                             <images>
                                 <image>
-                                    <name>gcr.io/spring-boot-base/${project.artifactId}</name>
+                                    <name>gcr.io/app-agro-322717/${project.artifactId}</name>
                                     <build>
                                         <tags>
                                             <tag>v2</tag>
