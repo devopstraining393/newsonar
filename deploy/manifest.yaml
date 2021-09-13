@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: spring-boot-base
+  name: spring-boot-base
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-boot-base
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: spring-boot-base
+    spec:
+      containers:
+        - image: kevinjh07/docker-maven:3.8.1-jdk-11
+          name: docker-maven
+          resources: {}
+status: {}
